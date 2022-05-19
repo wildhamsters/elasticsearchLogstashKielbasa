@@ -7,11 +7,15 @@ import org.tinylog.Logger;
 
 @RestController
 class LogController {
-
     @PostMapping("/log")
-    Log newLogMsg(@RequestBody Log newLog) {
-        Logger.info(newLog.logMsg());
-        return newLog;
-    }
+    void newLogMsg(@RequestBody Log newLog) {
 
+        String log = String.format("%s : %s microservice : %s class : %s", newLog.timeStamp(),
+                newLog.microService(), newLog.className(), newLog.logMsg());
+        switch (newLog.level().toUpperCase()) {
+            case "ERROR" -> Logger.error(log);
+            case "INFO" -> Logger.info(log);
+            case "DEBUG" -> Logger.debug(log);
+        }
+    }
 }
