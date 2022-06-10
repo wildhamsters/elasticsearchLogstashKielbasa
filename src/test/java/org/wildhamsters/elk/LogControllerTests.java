@@ -1,12 +1,7 @@
 package org.wildhamsters.elk;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
-import java.util.Date;
-
-import static org.testng.Assert.assertEquals;
 
 public class LogControllerTests {
 
